@@ -19,4 +19,9 @@ public class InputManager : MonoBehaviour
     {
         return inputActions.Player.Look.ReadValue<Vector2>();
     }
+
+    public bool Player_InteractPressedThisFrame()
+    {
+        return inputActions.Player.Interact.WasPressedThisFrame();
+    }
 }
