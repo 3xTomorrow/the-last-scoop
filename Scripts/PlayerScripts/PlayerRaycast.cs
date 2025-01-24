@@ -4,12 +4,12 @@ public class PlayerRaycast : MonoBehaviour
 {
     [SerializeField] private InputManager inputManager;
     [SerializeField] private LayerMask objectMask;
-    [SerializeField] private float rayDistance = 1.25f;
+    [SerializeField] private float rayDistance;
 
     private void Update()
     {
         RaycastHit rayHit;
-        if(Physics.Raycast(transform.position + transform.up*1.9f, transform.forward, out rayHit, rayDistance, objectMask))
+        if(Physics.Raycast(transform.position, transform.forward, out rayHit, rayDistance, objectMask))
         {
             if(rayHit.transform.GetComponent<Door>() != null)
             {
@@ -20,6 +20,6 @@ public class PlayerRaycast : MonoBehaviour
             }
         }
 
-        Debug.DrawRay(transform.position + transform.up * 1.9f, transform.forward * rayDistance, Color.red);
+        Debug.DrawRay(transform.position, transform.forward * rayDistance, Color.red);
     }
 }

@@ -26,4 +26,6 @@ public class Door : MonoBehaviour
             isDoorOpened = false;
         }
     }
+
+    
 }
