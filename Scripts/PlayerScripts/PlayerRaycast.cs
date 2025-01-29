@@ -11,6 +11,11 @@ public class PlayerRaycast : MonoBehaviour
 
     private const string WAFER_CONES = "Wafer Cones";
 
+    private const string COOKIE_DOUGH = "Cookie Dough";
+    private const string COOKIES_N_CREAM = "Cookies 'n Cream";
+    private const string MINT_CHOCOLATE_CHIP = "Mint Chocolate Chip";
+    private const string ROCKY_ROAD = "Rocky Road";
+
     public event EventHandler<NameOfInteractableArgs> OnInteract;
     public class NameOfInteractableArgs : EventArgs
     {
@@ -36,6 +41,34 @@ public class PlayerRaycast : MonoBehaviour
                 if(inputManager.Player_InteractPressedThisFrame())
                 {
                     coneHolder.SpawnCone();
+                }
+            }
+            if(rayHit.transform.tag == COOKIE_DOUGH)
+            {
+                if(inputManager.Player_InteractPressedThisFrame())
+                {
+                    coneHolder.AddScoop(ConeHolder.IceCreamFlavor.CookieDough);
+                }
+            }
+            if(rayHit.transform.tag == COOKIES_N_CREAM)
+            {
+                if(inputManager.Player_InteractPressedThisFrame())
+                {
+                    coneHolder.AddScoop(ConeHolder.IceCreamFlavor.CoookiesNCream);
+                }
+            }
+            if(rayHit.transform.tag == MINT_CHOCOLATE_CHIP)
+            {
+                if(inputManager.Player_InteractPressedThisFrame())
+                {
+                    coneHolder.AddScoop(ConeHolder.IceCreamFlavor.MintChip);
+                }
+            }
+            if(rayHit.transform.tag == ROCKY_ROAD)
+            {
+                if(inputManager.Player_InteractPressedThisFrame())
+                {
+                    coneHolder.AddScoop(ConeHolder.IceCreamFlavor.RockyRoad);
                 }
             }
         }
