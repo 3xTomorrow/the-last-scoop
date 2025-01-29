@@ -10,10 +10,7 @@ public class ConeHolder : MonoBehaviour
 
     [Header("Prefabs")]
     [SerializeField] private Transform conePrefab;
-    [SerializeField] private Transform cookieDoughPrefab;
-    [SerializeField] private Transform cookiesNCreamPrefab;
-    [SerializeField] private Transform mintChipPrefab;
-    [SerializeField] private Transform rockyRoadPrefab;
+    [SerializeField] private Transform[] scoopPrefabs;
 
 
     
@@ -38,25 +35,13 @@ public class ConeHolder : MonoBehaviour
     {
         if (hasCone)
         {
-            if (flavor == IceCreamFlavor.CookieDough)
+            for(int i = 0; i < scoopPrefabs.Length; i++)
             {
-                Transform cookie_dough = Instantiate(cookieDoughPrefab, scoopOneLocation.position, scoopOneLocation.rotation);
-                cookie_dough.SetParent(scoopOneLocation);
-            }
-            else if (flavor == IceCreamFlavor.CoookiesNCream)
-            {
-                Transform cookies_n_cream = Instantiate(cookiesNCreamPrefab, scoopOneLocation.position, scoopOneLocation.rotation);
-                cookies_n_cream.SetParent(scoopOneLocation);
-            }
-            else if (flavor == IceCreamFlavor.MintChip)
-            {
-                Transform mint_chip = Instantiate(mintChipPrefab, scoopOneLocation.position, scoopOneLocation.rotation);
-                mint_chip.SetParent(scoopOneLocation);
-            }
-            else if (flavor == IceCreamFlavor.RockyRoad)
-            {
-                Transform rocky_road = Instantiate(rockyRoadPrefab, scoopOneLocation.position, scoopOneLocation.rotation);
-                rocky_road.SetParent(scoopOneLocation);
+                if (i == (int)flavor)
+                {
+                    Transform firstScoop = Instantiate(scoopPrefabs[i], scoopOneLocation.position, scoopOneLocation.rotation);
+                    firstScoop.SetParent(scoopOneLocation);
+                }
             }
         }
     }
