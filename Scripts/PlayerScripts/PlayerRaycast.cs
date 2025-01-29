@@ -16,6 +16,8 @@ public class PlayerRaycast : MonoBehaviour
     private const string MINT_CHOCOLATE_CHIP = "Mint Chocolate Chip";
     private const string ROCKY_ROAD = "Rocky Road";
 
+    private const string TRASH = "Trash";
+
     public event EventHandler<NameOfInteractableArgs> OnInteract;
     public class NameOfInteractableArgs : EventArgs
     {
@@ -69,6 +71,13 @@ public class PlayerRaycast : MonoBehaviour
                 if(inputManager.Player_InteractPressedThisFrame())
                 {
                     coneHolder.AddScoop(ConeHolder.IceCreamFlavor.RockyRoad);
+                }
+            }
+            if (rayHit.transform.tag == TRASH)
+            {   
+                if(inputManager.Player_InteractPressedThisFrame())
+                {
+                    coneHolder.RemoveCone();
                 }
             }
         }

@@ -12,7 +12,9 @@ public class ConeHolder : MonoBehaviour
     [SerializeField] private Transform conePrefab;
     [SerializeField] private Transform[] scoopPrefabs;
 
-
+    private Transform coneClone;
+    private Transform scoopOneClone;
+    private Transform scoopTwoClone;
     
     public enum IceCreamFlavor {CookieDough, CoookiesNCream, MintChip, RockyRoad };
 
@@ -22,13 +24,12 @@ public class ConeHolder : MonoBehaviour
 
     public void SpawnCone()
     {
-        Transform cone = Instantiate(conePrefab, transform.position, transform.rotation);
-        cone.SetParent(transform);
-        if (hasCone)
+        if (!hasCone)
         {
-            Destroy(cone.gameObject);
+            coneClone = Instantiate(conePrefab, transform.position, transform.rotation);
+            coneClone.SetParent(transform);
+            hasCone = true;
         }
-        hasCone = true;
     }
 
     public void AddScoop(IceCreamFlavor flavor)
@@ -41,16 +42,12 @@ public class ConeHolder : MonoBehaviour
                 {
                     if(!hasFirstScoop)
                     {
-                        Transform firstScoop = Instantiate(scoopPrefabs[i], scoopOneLocation.position, scoopOneLocation.rotation);
-                        firstScoop.SetParent(scoopOneLocation);
+                        scoopOneClone = Instantiate(scoopPrefabs[i], scoopOneLocation.position, scoopOneLocation.rotation);
+                        scoopOneClone.SetParent(scoopOneLocation);
                     } else if(hasFirstScoop && !hasSecondScoop)
                     {
-                        Transform secondScoop = Instantiate(scoopPrefabs[i], scoopTwoLocation.position, scoopTwoLocation.rotation);
-                        secondScoop.SetParent(scoopTwoLocation);
-                        if(hasSecondScoop)
-                        {
-                            Destroy(secondScoop.gameObject);
-                        }
+                        scoopTwoClone = Instantiate(scoopPrefabs[i], scoopTwoLocation.position, scoopTwoLocation.rotation);
+                        scoopTwoClone.SetParent(scoopTwoLocation);
                         hasSecondScoop = true;
                     }
                     hasFirstScoop = true;
@@ -58,5 +55,25 @@ public class ConeHolder : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void RemoveCone()
+    {
+        if(hasSecondScoop)
+        {
+            Destroy(scoopTwoClone.gameObject);
+            hasSecondScoop = false;
+        }
+        if (hasFirstScoop)
+        {
+            Destroy(scoopOneClone.gameObject);
+            hasFirstScoop = false;
+        }
+        if (hasCone)
+        {
+            Destroy(coneClone.gameObject);
+            hasCone = false;
+        }
+        
     }
 }
