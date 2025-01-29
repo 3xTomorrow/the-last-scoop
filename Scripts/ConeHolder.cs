@@ -39,8 +39,22 @@ public class ConeHolder : MonoBehaviour
             {
                 if (i == (int)flavor)
                 {
-                    Transform firstScoop = Instantiate(scoopPrefabs[i], scoopOneLocation.position, scoopOneLocation.rotation);
-                    firstScoop.SetParent(scoopOneLocation);
+                    if(!hasFirstScoop)
+                    {
+                        Transform firstScoop = Instantiate(scoopPrefabs[i], scoopOneLocation.position, scoopOneLocation.rotation);
+                        firstScoop.SetParent(scoopOneLocation);
+                    } else if(hasFirstScoop && !hasSecondScoop)
+                    {
+                        Transform secondScoop = Instantiate(scoopPrefabs[i], scoopTwoLocation.position, scoopTwoLocation.rotation);
+                        secondScoop.SetParent(scoopTwoLocation);
+                        if(hasSecondScoop)
+                        {
+                            Destroy(secondScoop.gameObject);
+                        }
+                        hasSecondScoop = true;
+                    }
+                    hasFirstScoop = true;
+
                 }
             }
         }
