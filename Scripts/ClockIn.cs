@@ -2,15 +2,25 @@ using UnityEngine;
 
 public class ClockIn : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [SerializeField] private GameObject timeSheet;
+
+    private bool beganWork;
+
+    private int defaultLayer = 0;
+
+    public void ClockInEmployee()
     {
-        
+        if (!beganWork)
+        {
+            timeSheet.SetActive(true);
+            print("Clocking in");
+            gameObject.layer = defaultLayer;
+            beganWork = true;
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    public bool GetBeganWork()
     {
-        
+        return beganWork;
     }
 }

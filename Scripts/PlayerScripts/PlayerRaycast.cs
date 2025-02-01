@@ -18,6 +18,8 @@ public class PlayerRaycast : MonoBehaviour
 
     private const string TRASH = "Trash";
 
+    private const string CLOCK_IN = "Clock In";
+
     public event EventHandler<NameOfInteractableArgs> OnInteract;
     public class NameOfInteractableArgs : EventArgs
     {
@@ -78,6 +80,13 @@ public class PlayerRaycast : MonoBehaviour
                 if(inputManager.Player_InteractPressedThisFrame())
                 {
                     coneHolder.RemoveCone();
+                }
+            }
+            if(rayHit.transform.tag == CLOCK_IN)
+            {
+                if(inputManager.Player_InteractPressedThisFrame())
+                {
+                    rayHit.transform.GetComponent<ClockIn>().ClockInEmployee();
                 }
             }
         }
