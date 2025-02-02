@@ -20,6 +20,8 @@ public class PlayerRaycast : MonoBehaviour
 
     private const string CLOCK_IN = "Clock In";
 
+    private const string TASK_SHEET = "Task Sheet";
+
     public event EventHandler<NameOfInteractableArgs> OnInteract;
     public class NameOfInteractableArgs : EventArgs
     {
@@ -82,11 +84,18 @@ public class PlayerRaycast : MonoBehaviour
                     coneHolder.RemoveCone();
                 }
             }
-            if(rayHit.transform.tag == CLOCK_IN)
+            if(rayHit.transform.GetComponent<ClockIn>() != null)
             {
                 if(inputManager.Player_InteractPressedThisFrame())
                 {
                     rayHit.transform.GetComponent<ClockIn>().ClockInEmployee();
+                }
+            }
+            if(rayHit.transform.GetComponent<TaskSheet>() != null)
+            {
+                if(inputManager.Player_InteractPressedThisFrame())
+                {
+                    rayHit.transform.GetComponent<TaskSheet>().OpenTaskSheet();
                 }
             }
         }
