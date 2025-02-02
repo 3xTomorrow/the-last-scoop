@@ -2,15 +2,21 @@ using UnityEngine;
 
 public class MovementManager : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [SerializeField] private PlayerMovement playerMovementScript;
+    [SerializeField] private CameraMovement cameraMovementScript;
+    [SerializeField] private FootstepsManager footstepsManagerScript;
+
+    public void DisableMovement()
     {
-        
+        playerMovementScript.enabled = false;
+        cameraMovementScript.enabled = false;
+        footstepsManagerScript.enabled = false;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void EnableMovement()
     {
-        
-    }
+        playerMovementScript.enabled = true;
+        cameraMovementScript.enabled = true;
+        footstepsManagerScript.enabled = true;
+    }   
 }

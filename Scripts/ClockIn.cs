@@ -13,7 +13,6 @@ public class ClockIn : MonoBehaviour
         if (!beganWork)
         {
             timeSheet.SetActive(true);
-            print("Clocking in");
             gameObject.layer = defaultLayer;
             beganWork = true;
         }
