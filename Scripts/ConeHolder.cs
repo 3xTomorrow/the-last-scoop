@@ -32,6 +32,11 @@ public class ConeHolder : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// <br>Adds in a scoop of ice cream to the cone</br>
+    /// <br>Will add a second scoop on top of first if there is a first.</br>
+    /// </summary>
+    /// <param name="flavor">Flavor that scooped onto the cone</param>
     public void AddScoop(IceCreamFlavor flavor)
     {
         if (hasCone)
