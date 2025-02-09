@@ -25,4 +25,9 @@ public class FootstepsManager : MonoBehaviour
             footstepsAudio.Stop();
         }
     }
+
+    public void StopPlayingFootsteps()
+    {
+        footstepsAudio.Stop();
+    }
 }

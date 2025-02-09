@@ -56938,6 +56938,8 @@ GameObject:
   - component: {fileID: 918663333}
   - component: {fileID: 918663332}
   - component: {fileID: 918663334}
+  - component: {fileID: 918663336}
+  - component: {fileID: 918663335}
   m_Layer: 0
   m_Name: PlayerCam
   m_TagString: Untagged
@@ -56954,7 +56956,7 @@ Transform:
   m_GameObject: {fileID: 918663330}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.7, z: -0.028000757}
+  m_LocalPosition: {x: 0, y: 1.7, z: -0.02800076}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -57036,6 +57038,41 @@ MonoBehaviour:
     m_Bits: 128
   rayDistance: 1.5
   coneHolder: {fileID: 1320303595}
+--- !u!95 &918663335
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 918663330}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 92c4f7f1a34256a448e5cea6b1160184, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &918663336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 918663330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e73098306ad4b2946b36df0dcc3dd879, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inputManager: {fileID: 902715738}
 --- !u!1 &920626055
 GameObject:
   m_ObjectHideFlags: 0

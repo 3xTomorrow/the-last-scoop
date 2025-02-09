@@ -1,4 +1,5 @@
 using System.Threading;
+using Unity.Cinemachine;
 using UnityEngine;
 
 public class CameraMovement : MonoBehaviour
@@ -6,7 +7,7 @@ public class CameraMovement : MonoBehaviour
     [SerializeField][Range(10f,500f)] private float mouseSens = 10f;
     [SerializeField] private InputManager inputManager;
     [SerializeField] private Transform playerTransform;
-    
+
     private Transform camTransform;
 
     private float mouseX;
@@ -35,6 +36,5 @@ public class CameraMovement : MonoBehaviour
         camTransform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
 
         playerTransform.Rotate(Vector3.up * mouseX);
-
     }
 }
