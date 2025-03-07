@@ -3,8 +3,9 @@ using UnityEngine;
 
 public class ManagerJumpscare : MonoBehaviour
 {
-    [SerializeField] private MovementManager movementManager;
+
     [SerializeField] private Transform playerT;
+    [SerializeField] private Transform playerCamT;
     [SerializeField] private Transform managerT;
     [SerializeField] private AudioClip jumpscareSound;
     [SerializeField] private AudioSource jumpscareAudioSource;
@@ -24,11 +25,11 @@ public class ManagerJumpscare : MonoBehaviour
     {
         if(other.CompareTag("Player"))
         {
-            movementManager.DisableMovement();
+            MovementManager.Instance.DisableMovement();
             managerAnimator.SetBool(IS_SCARING, true);
             managerT.position = new Vector3(2.7f, managerT.position.y, managerT.position.z);
-            managerT.LookAt(playerT, Vector3.up);
-            playerT.LookAt(managerT, Vector3.up);
+            managerT.LookAt(playerT, Vector3.down);
+            playerCamT.LookAt(managerT, Vector3.up);
             jumpscareAudioSource.PlayOneShot(jumpscareSound,1);
             OnJumpscare?.Invoke(this, EventArgs.Empty);
         }
