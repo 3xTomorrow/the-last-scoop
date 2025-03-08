@@ -18,7 +18,9 @@ public class MovementManager : MonoBehaviour
             Instance = this;
         }
     }
-
+    ///<summary>
+    ///Disables player movement while also stopping the footsteps sound and the camera animation.
+    ///</summary>
     public void DisableMovement()
     {
         footstepsManagerScript.StopPlayingFootsteps();
@@ -29,6 +31,9 @@ public class MovementManager : MonoBehaviour
         footstepsManagerScript.enabled = false;
     }
 
+    /// <summary>
+    /// Enables player movement.
+    /// </summary>
     public void EnableMovement()
     {
         camAnimScript.enabled = true;

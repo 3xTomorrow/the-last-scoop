@@ -17,6 +17,7 @@ public class ManagerJumpscare : MonoBehaviour
     [SerializeField] private AudioClip jumpscareSound;
     [SerializeField] private AudioSource jumpscareAudioSource;
 
+    private bool dialogueComplete = false;
 
     private Transform playerCamT;
     private Animator managerAnimator;
@@ -29,6 +30,22 @@ public class ManagerJumpscare : MonoBehaviour
     {
         managerAnimator = managerT.gameObject.GetComponentInChildren<Animator>();
         playerCamT = playerCam.transform;
+    }
+
+    private void Update()
+    {
+        print(DialogueManager.Instance.isInDialogue + " " + DialogueManager.Instance.index);
+            if (DialogueManager.Instance.isInDialogue)
+            {
+                if(DialogueManager.Instance.index == 1)
+                    managerAnimator.SetBool(IS_SCARING, false);
+            }
+            else
+            {
+                playerCam.Lens.FieldOfView = 60;
+                dialogueComplete = true;
+            }
+  
     }
 
     private void OnTriggerEnter(Collider other)
@@ -46,7 +63,8 @@ public class ManagerJumpscare : MonoBehaviour
             playerCamT.LookAt(bossHeadT);
             playerCam.Lens.FieldOfView = 20;
             jumpscareAudioSource.PlayOneShot(jumpscareSound,1);
-            OnJumpscare?.Invoke(this, EventArgs.Empty);
+            DialogueManager.Instance.StartDialogue(DialogueManager.Instance.getDialoguesArray()[0]);
+            this.gameObject.GetComponent<BoxCollider>().enabled = false;
         }
     }
 }

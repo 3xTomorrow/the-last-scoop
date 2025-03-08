@@ -16,6 +16,5 @@ public class FontSizeChanger : MonoBehaviour
     private void Update()
     {
         text.fontSize = Mathf.Pow(decreaseFactor, -text.text.Length + Mathf.Log(maxFontSize-minFontSize, decreaseFactor)) + minFontSize;
-        print(Mathf.Pow(decreaseFactor, -text.text.Length + Mathf.Log(maxFontSize - minFontSize, decreaseFactor)) + minFontSize); 
     }
 }
