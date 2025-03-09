@@ -198,3 +198,11 @@ MonoBehaviour:
     applyColorToSubfolders: 0
     applyIconToSubfolders: 0
     materialColor: 0
+  - folderName: BlenderImports
+    folderColor: {r: 1, g: 0.59607846, b: 0, a: 1}
+    fullPath: Assets/BlenderImports
+    icon: {fileID: 0}
+    applyToAllFolders: 0
+    applyColorToSubfolders: 0
+    applyIconToSubfolders: 0
+    materialColor: 15

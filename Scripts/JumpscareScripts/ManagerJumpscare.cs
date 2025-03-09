@@ -17,12 +17,12 @@ public class ManagerJumpscare : MonoBehaviour
     [SerializeField] private AudioClip jumpscareSound;
     [SerializeField] private AudioSource jumpscareAudioSource;
 
-    private bool dialogueComplete = false;
+    //private bool dialogueComplete = false;
 
     private Transform playerCamT;
     private Animator managerAnimator;
 
-    public event EventHandler OnJumpscare;
+    private bool hasTalked; //Used to check if the player has already talked to the manager
 
     private const string IS_SCARING = "isScaring";
 
@@ -38,11 +38,16 @@ public class ManagerJumpscare : MonoBehaviour
         {
             if(DialogueManager.Instance.index == 1)
                 managerAnimator.SetBool(IS_SCARING, false);
+            else if(DialogueManager.Instance.index == 2 && !hasTalked)
+            {
+                ObjectiveManager.Instance.NextObjective();
+                hasTalked = true;
+            }
         }
         else
         {
             playerCam.Lens.FieldOfView = 60;
-            dialogueComplete = true;
+            //dialogueComplete = true;
         }
   
     }

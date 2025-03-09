@@ -26,6 +26,7 @@ public class ClockIn : MonoBehaviour
         if (!beganWork)
         {
             timeSheet.SetActive(true);
+            ObjectiveManager.Instance.NextObjective();
             gameObject.layer = defaultLayer;
             beganWork = true;
         }
