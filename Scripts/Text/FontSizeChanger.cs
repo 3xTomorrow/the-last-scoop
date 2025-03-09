@@ -3,10 +3,10 @@ using UnityEngine;
 
 public class FontSizeChanger : MonoBehaviour
 {
-    private float maxFontSize = 100f;
+    private float maxFontSize = 80f;
     private float minFontSize = 15f;
     private TMP_Text text;
-    private float decreaseFactor = 1.08f;
+    private float decreaseFactor = 1.1f;
 
     private void Awake()
     {

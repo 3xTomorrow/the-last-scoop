@@ -25,6 +25,7 @@ public class MovementManager : MonoBehaviour
     {
         footstepsManagerScript.StopPlayingFootsteps();
         camAnimScript.SetWalking(false);
+        camAnimScript.PauseAnimation();
         camAnimScript.enabled = false;
         playerMovementScript.enabled = false;
         cameraMovementScript.enabled = false;
@@ -37,6 +38,7 @@ public class MovementManager : MonoBehaviour
     public void EnableMovement()
     {
         camAnimScript.enabled = true;
+        camAnimScript.ResumeAnimation();
         playerMovementScript.enabled = true;
         cameraMovementScript.enabled = true;
         footstepsManagerScript.enabled = true;

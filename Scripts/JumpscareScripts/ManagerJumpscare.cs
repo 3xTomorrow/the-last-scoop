@@ -34,17 +34,16 @@ public class ManagerJumpscare : MonoBehaviour
 
     private void Update()
     {
-        print(DialogueManager.Instance.isInDialogue + " " + DialogueManager.Instance.index);
-            if (DialogueManager.Instance.isInDialogue)
-            {
-                if(DialogueManager.Instance.index == 1)
-                    managerAnimator.SetBool(IS_SCARING, false);
-            }
-            else
-            {
-                playerCam.Lens.FieldOfView = 60;
-                dialogueComplete = true;
-            }
+        if (DialogueManager.Instance.isInDialogue)
+        {
+            if(DialogueManager.Instance.index == 1)
+                managerAnimator.SetBool(IS_SCARING, false);
+        }
+        else
+        {
+            playerCam.Lens.FieldOfView = 60;
+            dialogueComplete = true;
+        }
   
     }
 

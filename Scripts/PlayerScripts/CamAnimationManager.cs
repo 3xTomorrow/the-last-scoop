@@ -30,4 +30,14 @@ public class CamAnimationManager : MonoBehaviour
     {
         animator.SetBool(IS_WALKING, isWalking);
     }
+
+    public void PauseAnimation()
+    {
+        animator.speed = 0;
+    }
+
+    public void ResumeAnimation()
+    {
+        animator.speed = 1;
+    }
 }
