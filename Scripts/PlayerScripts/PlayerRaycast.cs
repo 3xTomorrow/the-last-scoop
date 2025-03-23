@@ -1,4 +1,5 @@
 using System;
+using System.Threading.Tasks.Sources;
 using UnityEngine;
 
 public class PlayerRaycast : MonoBehaviour
@@ -15,6 +16,8 @@ public class PlayerRaycast : MonoBehaviour
     private const string COOKIES_N_CREAM = "Cookies 'n Cream";
     private const string MINT_CHOCOLATE_CHIP = "Mint Chocolate Chip";
     private const string ROCKY_ROAD = "Rocky Road";
+    private const string VANILLA = "Soft Serve Vanilla";
+    private const string CHOCOLATE = "Soft Serve Chocolate";
 
     private const string TRASH = "Trash";
 
@@ -81,6 +84,20 @@ public class PlayerRaycast : MonoBehaviour
                 if(inputManager.Player_InteractPressedThisFrame())
                 {
                     coneHolder.RemoveCone();
+                }
+            }
+            if(rayHit.transform.tag == VANILLA)
+            {
+                if(inputManager.Player_InteractPressedThisFrame())
+                {
+                    coneHolder.AddScoop(ConeHolder.IceCreamFlavor.Vanilla);
+                }
+            }
+            if(rayHit.transform.tag == CHOCOLATE)
+            {
+                if(inputManager.Player_InteractPressedThisFrame())
+                {
+                    coneHolder.AddScoop(ConeHolder.IceCreamFlavor.Chocolate);
                 }
             }
             if(rayHit.transform.GetComponent<ClockIn>() != null)

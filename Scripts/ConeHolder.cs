@@ -16,11 +16,12 @@ public class ConeHolder : MonoBehaviour
     private Transform scoopOneClone;
     private Transform scoopTwoClone;
     
-    public enum IceCreamFlavor {CookieDough, CoookiesNCream, MintChip, RockyRoad };
+    public enum IceCreamFlavor {CookieDough, CoookiesNCream, MintChip, RockyRoad, Vanilla, Chocolate };
 
     private bool hasCone = false;
     private bool hasFirstScoop = false;
     private bool hasSecondScoop = false;
+    private bool hasSoftServe = false;
 
     public void SpawnCone()
     {
@@ -45,17 +46,28 @@ public class ConeHolder : MonoBehaviour
             {
                 if (i == (int)flavor)
                 {
-                    if(!hasFirstScoop)
+                    if((int) flavor < 4 && !hasSoftServe)
                     {
-                        scoopOneClone = Instantiate(scoopPrefabs[i], scoopOneLocation.position, scoopOneLocation.rotation);
-                        scoopOneClone.SetParent(scoopOneLocation);
-                    } else if(hasFirstScoop && !hasSecondScoop)
+                        if(!hasFirstScoop)
+                        {
+                            scoopOneClone = Instantiate(scoopPrefabs[i], scoopOneLocation.position, scoopOneLocation.rotation);
+                            scoopOneClone.SetParent(scoopOneLocation);
+                        } else if(hasFirstScoop && !hasSecondScoop)
+                        {
+                            scoopTwoClone = Instantiate(scoopPrefabs[i], scoopTwoLocation.position, scoopTwoLocation.rotation);
+                            scoopTwoClone.SetParent(scoopTwoLocation);
+                            hasSecondScoop = true;
+                        }
+                        hasFirstScoop = true;
+                    } else
                     {
-                        scoopTwoClone = Instantiate(scoopPrefabs[i], scoopTwoLocation.position, scoopTwoLocation.rotation);
-                        scoopTwoClone.SetParent(scoopTwoLocation);
-                        hasSecondScoop = true;
+                        if(!hasSoftServe)
+                        {
+                            scoopOneClone = Instantiate(scoopPrefabs[i], scoopOneLocation.position + (Vector3.down * .05f), scoopOneLocation.rotation);
+                            scoopOneClone.SetParent(scoopOneLocation);
+                            hasSoftServe = true;
+                        }
                     }
-                    hasFirstScoop = true;
 
                 }
             }
@@ -69,10 +81,11 @@ public class ConeHolder : MonoBehaviour
             Destroy(scoopTwoClone.gameObject);
             hasSecondScoop = false;
         }
-        if (hasFirstScoop)
+        if (hasFirstScoop || hasSoftServe)
         {
             Destroy(scoopOneClone.gameObject);
             hasFirstScoop = false;
+            hasSoftServe = false;
         }
         if (hasCone)
         {
