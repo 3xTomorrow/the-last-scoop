@@ -24,7 +24,6 @@ public class MovementManager : MonoBehaviour
     public void DisableMovement()
     {
         footstepsManagerScript.StopPlayingFootsteps();
-        camAnimScript.SetWalking(false);
         camAnimScript.PauseAnimation();
         camAnimScript.enabled = false;
         playerMovementScript.enabled = false;

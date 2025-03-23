@@ -1,3 +1,4 @@
+using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.Animations;
 
@@ -5,39 +6,40 @@ public class CamAnimationManager : MonoBehaviour
 {
     [SerializeField] private InputManager inputManager;
 
-    private Animator animator;
+    private float speed = 3f;
+    private float range = 0.05f;
+    private float speedBeforeStop;
+    private float cameraY;
 
-    private const string IS_WALKING = "isWalking";
+    private Transform camT;
 
     private void Awake()
     {
-        animator = GetComponent<Animator>();
+        camT = GetComponent<Transform>();
     }
 
     private void Update()
     {
         if(inputManager.GetMovementVector() != Vector2.zero)
         {
-            animator.SetBool(IS_WALKING, true);
-        }
-        else
+            cameraY = range * (Mathf.Sin(Time.time * (speed * 2.7f))) + 1.7f;
+        } else
         {
-            animator.SetBool(IS_WALKING, false);
+            cameraY = range * (Mathf.Sin(Time.time * speed)) + 1.7f;
         }
-    }
+        
+        camT.localPosition = new Vector3(0,cameraY,-.02f);
 
-    public void SetWalking(bool isWalking)
-    {
-        animator.SetBool(IS_WALKING, isWalking);
     }
 
     public void PauseAnimation()
     {
-        animator.speed = 0;
+        speedBeforeStop = speed;
+        speed = 0;
     }
 
     public void ResumeAnimation()
     {
-        animator.speed = 1;
+        speed = speedBeforeStop;
     }
 }
