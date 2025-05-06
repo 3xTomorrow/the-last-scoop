@@ -116,6 +116,13 @@ public class PlayerRaycast : MonoBehaviour
                     rayHit.transform.GetComponent<TaskSheet>().OpenTaskSheet();
                 }
             }
+            if(rayHit.transform.GetComponent<PowerScript>() != null)
+            {
+                if(inputManager.Player_InteractPressedThisFrame())
+                {
+                    rayHit.transform.GetComponent<PowerScript>().PowerLights();
+                }
+            }
         }
         else
         {
