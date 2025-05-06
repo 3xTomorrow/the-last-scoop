@@ -41405,6 +41405,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inputManager: {fileID: 902715738}
+  camAnimScript: {fileID: 918663336}
 --- !u!82 &617565829
 AudioSource:
   m_ObjectHideFlags: 0
@@ -41419,7 +41420,7 @@ AudioSource:
   m_Resource: {fileID: 8300000, guid: e3cfcb32689b274419ac73380ea96888, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.5
-  m_Pitch: 0.6
+  m_Pitch: 0.7
   Loop: 1
   Mute: 0
   Spatialize: 0
@@ -82273,6 +82274,7 @@ MonoBehaviour:
   - {fileID: 565234443977821725, guid: d4fbf5c34cbe42e4e9ee4dac75b18917, type: 3}
   - {fileID: 8185717578174961876, guid: 99d49af7f607f4349a2cf26d1fdb5d03, type: 3}
   - {fileID: 9220355568096398285, guid: aa0b34c7d1a7da542991e714ca85619d, type: 3}
+  - {fileID: 8679663050758421296, guid: f2ef520096cee10428d11fbfdb9a2ad8, type: 3}
 --- !u!1 &1321663693
 GameObject:
   m_ObjectHideFlags: 0
@@ -103538,13 +103540,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1633730828}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0.70710677, y: -0, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0.30000007, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1320303594}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!1 &1635962388
 GameObject:
   m_ObjectHideFlags: 0

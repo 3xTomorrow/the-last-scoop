@@ -61,7 +61,7 @@ public class ConeHolder : MonoBehaviour
                         hasFirstScoop = true;
                     } else
                     {
-                        if(!hasSoftServe)
+                        if(!hasSoftServe && !hasFirstScoop)
                         {
                             scoopOneClone = Instantiate(scoopPrefabs[i], scoopOneLocation.position + (Vector3.down * .05f), scoopOneLocation.rotation);
                             scoopOneClone.SetParent(scoopOneLocation);
