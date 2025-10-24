@@ -6,29 +6,42 @@ public class PowerScript : MonoBehaviour
     [SerializeField] private Light[] lights;
     [SerializeField] private AudioSource lightBuzz;
     [SerializeField] private Material lightMaterial;
+    
+    private AudioSource killSwitch;
 
     private bool isOn = true;
 
+    private void Awake()
+    {
+        killSwitch = GetComponent<AudioSource>();
+    }
+
     public void PowerLights()
     {
-        if(isOn)
+        if (!killSwitch.isPlaying)
         {
-            lightMaterial.SetColor("_EmissionColor", Color.black);
-            lightBuzz.Pause();
-            foreach(Light light in lights)
+            if (isOn)
             {
-                light.enabled = false;
+                lightMaterial.SetColor("_EmissionColor", Color.black);
+                killSwitch.Play();
+                lightBuzz.Pause();
+                foreach (Light light in lights)
+                {
+                    light.enabled = false;
+                }
+                isOn = false;
             }
-            isOn = false;
-        } else if(!isOn)
-        {
-            lightMaterial.SetColor("_EmissionColor", Color.white);
-            lightBuzz.UnPause();
-            foreach(Light light in lights)
+            else if (!isOn)
             {
-                light.enabled = true;
+                lightMaterial.SetColor("_EmissionColor", Color.white);
+                killSwitch.Play();
+                lightBuzz.UnPause();
+                foreach (Light light in lights)
+                {
+                    light.enabled = true;
+                }
+                isOn = true;
             }
-            isOn = true;
         }
     }
 }

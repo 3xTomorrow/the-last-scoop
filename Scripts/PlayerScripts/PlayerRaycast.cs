@@ -121,6 +121,7 @@ public class PlayerRaycast : MonoBehaviour
                 if(inputManager.Player_InteractPressedThisFrame())
                 {
                     rayHit.transform.GetComponent<PowerScript>().PowerLights();
+
                 }
             }
         }
