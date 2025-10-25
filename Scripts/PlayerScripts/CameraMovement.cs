@@ -37,7 +37,5 @@ public class CameraMovement : MonoBehaviour
 
         playerTransform.Rotate(Vector3.up * mouseX);
 
-        print(mouseX);
-        print(mouseY);
     }
 }
