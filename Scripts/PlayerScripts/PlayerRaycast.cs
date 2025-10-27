@@ -7,7 +7,7 @@ public class PlayerRaycast : MonoBehaviour
     [SerializeField] private InputManager inputManager;
     [SerializeField] private LayerMask objectMask;
     [SerializeField] private float rayDistance;
-    [SerializeField]private ConeHolder coneHolder;
+    [SerializeField] private ConeHolder coneHolder;
 
 
     private const string WAFER_CONES = "Wafer Cones";
@@ -81,9 +81,18 @@ public class PlayerRaycast : MonoBehaviour
             }
             if (rayHit.transform.tag == TRASH)
             {   
-                if(inputManager.Player_InteractPressedThisFrame())
+                if(rayHit.transform.GetComponent<EmptyTrash>() != null)
                 {
-                    coneHolder.RemoveCone();
+                    if (inputManager.Player_InteractPressedThisFrame())
+                    {
+                        rayHit.transform.GetComponent<EmptyTrash>().EmptyTheTrash();
+                    }
+                } else
+                {
+                    if (inputManager.Player_InteractPressedThisFrame())
+                    {
+                        coneHolder.RemoveCone();
+                    }
                 }
             }
             if(rayHit.transform.tag == VANILLA)

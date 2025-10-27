@@ -4,6 +4,8 @@ public class ClockIn : MonoBehaviour
 {
     [SerializeField] private GameObject timeSheet;
     [SerializeField] private TaskSheet taskSheetScript;
+    [SerializeField] private EmptyTrash emptyTrash;
+
 
     private bool beganWork;
 
@@ -26,14 +28,16 @@ public class ClockIn : MonoBehaviour
         if (!beganWork)
         {
             timeSheet.SetActive(true);
+            emptyTrash.gameObject.layer = interactableLayer;
             ObjectiveManager.Instance.NextObjective();
             gameObject.layer = defaultLayer;
             beganWork = true;
         }
     }
 
-    public bool GetBeganWork()
+    //Not sure where this is being used
+    /*public bool GetBeganWork()
     {
         return beganWork;
-    }
+    }*/
 }
